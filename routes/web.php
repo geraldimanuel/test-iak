@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\IakController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::controller(IakController::class)->group(function() {
+    Route::get('/', 'index');
+    Route::post('/payment/process', 'store');
 });
